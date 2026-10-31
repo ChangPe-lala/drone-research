@@ -23,14 +23,14 @@ def _run(script: str, extra: list[str]) -> None:
 
 def _status() -> None:
     artifacts = {
-        "DJI CP1": "output/results/validation/dji_only/cp1_feature_screen/feature_evidence.csv",
-        "VTOL CP1": "output/results/validation/vtol_only/cp1_feature_screen/feature_evidence.csv",
-        "COMBINED CP1": "output/results/validation/combined/cp1_feature_screen/feature_evidence.csv",
-        "DJI finalized": "output/results/validation/dji_only/finalized/holdout_metrics.csv",
-        "VTOL finalized": "output/results/validation/vtol_only/finalized/holdout_metrics.csv",
-        "COMBINED finalized": "output/results/validation/combined/finalized/holdout_metrics.csv",
-        "CP3 evidence": "output/results/validation/cp3_comparison/validation_case_evidence.csv",
-        "CP3 selected": "output/results/validation/selected_configuration.json",
+        "DJI CP1": "output/results/multiuav/validation/dji_only/cp1_feature_screen/feature_evidence.csv",
+        "VTOL CP1": "output/results/multiuav/validation/vtol_only/cp1_feature_screen/feature_evidence.csv",
+        "COMBINED CP1": "output/results/multiuav/validation/combined/cp1_feature_screen/feature_evidence.csv",
+        "DJI finalized": "output/results/multiuav/validation/dji_only/finalized/holdout_metrics.csv",
+        "VTOL finalized": "output/results/multiuav/validation/vtol_only/finalized/holdout_metrics.csv",
+        "COMBINED finalized": "output/results/multiuav/validation/combined/finalized/holdout_metrics.csv",
+        "CP3 evidence": "output/results/multiuav/validation/cp3_comparison/validation_case_evidence.csv",
+        "CP3 selected": "output/results/multiuav/validation/selected_configuration.json",
         "Segment evidence": "output/results/multihub/segment_model_checkpoint/segment_model_evidence.csv",
         "Segment model": "output/models/multihub/segment_energy_model.pkl",
         "Final RQ5": "output/results/multihub/final_rq5/mission_recommendations.csv",
