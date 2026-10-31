@@ -132,8 +132,9 @@ planned_relative_wind_angle:
   maximum: 180
   nullable: true
   target_relation: NONE
-  deployability: ROUTE_PLAN_DERIVED
-  notes: "0=tailwind, 90=crosswind, 180=headwind. Historical flight-level values are endpoint route-direction proxies."
+  deployability: ROUTE_PLAN_DERIVED  
+  notes: "Wind FROM convention: 0=headwind, 90=crosswind, 180=tailwind. Historical flight-level values are observed endpoint proxies."
+
 
 planned_headwind_component:
   dtype: float
