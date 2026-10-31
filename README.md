@@ -2,30 +2,6 @@
 
 This repository contains the machine learning pipeline for DTA. It is designed around a strict hybrid execution approach balancing R&D flexibility with absolute reproducibility for official reporting.
 
-## ┌─────────────────────────────────────────────────────────┐
-## │                  EXECUTION POLICY                       │
-## ├─────────────────────────────────────────────────────────┤
-## │                                                         │
-## │  R&D / Debugging                                        │
-## │      → individual modules may be executed manually      │
-## │                                                         │
-## │  Research Experiment                                    │
-## │      → `python run_pipeline.py --stage all`             │
-## │                                                         │
-## │  Human Decision Gates                                   │
-## │      → cannot be bypassed by automation                 │
-## │                                                         │
-## │  Final Reported Results                                 │
-## │      → must be generated from frozen experiment         │
-## │                                                         │
-## │  Final Test                                             │
-## │      → evaluated only after model selection             │
-## │      → never used for subsequent model selection        │
-## │                                                         │
-## │  Changed methodology / dataset / decision               │
-## │      → create a new experiment ID                       │
-## │                                                         │
-## └─────────────────────────────────────────────────────────┘
 
 ## How to run the official experiment
 
