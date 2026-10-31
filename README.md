@@ -3,33 +3,73 @@
 This repository contains the machine learning pipeline for DTA. It is designed around a strict hybrid execution approach balancing R&D flexibility with absolute reproducibility for official reporting.
 
 
-## How to run the official experiment
 
-```bash
-# 1. Start the pipeline
-python run_pipeline.py --stage all
+## Canonical Research Pipeline
 
-# 2. The pipeline will stop at GATE 1 (Data Quality). 
-# Review output/results/data_quality/outlier_candidates.csv
-# Update decisions/data_quality_decision.yaml (set approved: true)
+### 1. Data preparation and supporting experiments
 
-# 3. Resume the pipeline
-python run_pipeline.py --stage all
+python run_dataset_extension.py --stage all
 
-# 4. The pipeline will stop at GATE 2 (Split Protocol).
-# Review output/figures/splits/
-# Update decisions/split_decision.yaml (set approved: true)
+Runs D00-D12, including D06A and D07A.
+Does not automatically finalize the research configuration.
 
-# 5. Resume the pipeline
-python run_pipeline.py --stage all
+### 2. CP1 — Feature screening
 
-# 6. The pipeline will stop at GATE 3 (Model Selection).
-# Review output/results/model_evaluation/model_evidence_table.csv
-# Update decisions/model_selection_decision.yaml (set approved: true)
+python run_pipeline.py --stage cp1 --case DJI_ONLY --models all
 
-# 7. Resume the pipeline to evaluate the final test set and lock the experiment.
-python run_pipeline.py --stage all
-```
+Review feature_evidence.csv before selecting a feature set.
+Repeat for VTOL_ONLY and COMBINED.
+
+### 3. CP2 — Model benchmark
+
+python run_pipeline.py --stage cp2 --case DJI_ONLY --feature-set FS_OPS_ENV --models all
+
+FS_OPS_ENV is an example; select the feature set using CP1 evidence.
+
+### 4. Finalize — Holdout, SHAP, Ablation
+
+python run_pipeline.py --stage finalize --case DJI_ONLY --feature-set FS_OPS_ENV --model CatBoost
+
+The feature set and model must be selected explicitly using research evidence.
+Repeat for other validation cases as required.
+
+### 5. CP3 — Compare and select
+
+python run_pipeline.py --stage cp3
+python run_pipeline.py --stage select --case DJI_ONLY
+
+Select the final case only after reviewing CP3 evidence.
+
+### 6. Full Ablation
+
+python run_full_ablation.py
+
+### 7. Multi-Hub G00-G07
+
+python run_multihub_g00_g07.py --case DJI_ONLY --models all
+
+### 8. Freeze segment Energy model
+
+python fit_segment_energy_model.py --model XGBoost
+
+Choose the segment model using benchmark evidence.
+
+### 9. Multi-Hub G08-G14 and P0-P4
+
+python run_final_multihub.py --case DJI_ONLY
+
+### 10. Topology sensitivity
+
+python run_multihub_sensitivity.py --case DJI_ONLY
+
+### 11. Check pipeline status
+
+python run_research.py status
+python run_pipeline.py --stage status
+
+Research decisions are explicit.
+No automatic CP1/CP2/CP3 approval or selection is performed.
+
 
 ## Directory Structure
 - `config/`: System paths and feature definitions.
