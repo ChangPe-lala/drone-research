@@ -1,0 +1,19 @@
+# =====================================================================
+# HUMAN GATE 3: MODEL SELECTION DECISION
+# =====================================================================
+# This file dictates which model is selected for the final test set evaluation.
+# The pipeline will STOP if approved = false.
+
+approved: true
+approved_by: "Researcher Name"
+date: "YYYY-MM-DD"
+
+# ---------------------------------------------------------------------
+# Selected Model
+# Must match a model name from the Model Evidence Table exactly.
+# Example: "XGBoost", "Random Forest", "Ridge"
+# ---------------------------------------------------------------------
+selected_model: "ExtraTrees"
+
+# Reason for this choice based on CV results and Diagnostics
+decision_reason: "ExtraTrees showed the highest OOF R2 and low MAPE. Residuals are homoscedastic across routes."

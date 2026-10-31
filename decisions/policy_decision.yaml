@@ -1,0 +1,30 @@
+approved: true
+
+uncertainty:
+  method: null
+  alpha: 0.10
+
+ood:
+  detector: null
+  normalization: null
+  warning_threshold: null
+  hard_reject_threshold: null
+
+routing:
+  confidence_policy: null
+  uncertainty_penalty: null
+  ood_penalty: null
+  fallback_policy: null
+
+battery:
+  capacity_wh: 99.9
+  minimum_reserve_fraction: null
+
+evaluation:
+  outcome_source: MODEL_IMPLIED
+  # ACTUAL / INDEPENDENT_SIMULATOR / MODEL_IMPLIED
+
+decision:
+  rationale: null
+  approved_by: null
+  approved_at: null

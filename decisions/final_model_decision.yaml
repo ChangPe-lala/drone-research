@@ -1,0 +1,31 @@
+# # FINAL MODEL HUMAN GATE
+# # Fill only after D07/D08/D09/D10/D11/D12 evidence has been reviewed.
+# approved: false
+# selected_feature_set: null # F0_BASE | F1_ANGLE | F2_COMPONENTS | F3_ALL_AERO
+# selected_model: null # LinearRegression | Ridge | ExtraTrees | XGBoost | CatBoost
+# architecture: null # UNIVERSAL | PLATFORM_AWARE
+# target: energy_efficiency
+# rationale: null
+# approved_by: null
+# approved_at: null
+
+approved: true
+
+selected_feature_set: F0_BASE
+selected_model: ExtraTrees
+architecture: PLATFORM_AWARE
+
+target: energy_efficiency
+
+rationale: >
+  ExtraTrees with the PLATFORM_AWARE architecture was selected based on
+  the complete D07-D12 evidence. It achieved the lowest overall
+  Evidence_Rank_Sum (9.0) and the best combined Macro WMAPE among the
+  evaluated universal/platform-aware candidates (0.092195), improving
+  over Universal ExtraTrees (0.121904). Cross-platform direct transfer
+  remained poor for all models, while explicit platform identity
+  improved heterogeneous Multi-UAV prediction. Direct EE is retained
+  as the primary target based on the overall D09 target-strategy evidence.
+
+approved_by: research_team
+approved_at: 2026-08-23

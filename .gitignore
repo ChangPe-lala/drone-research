@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Editor
+.vscode/
+
+# Temporary outputs
+tmp/
+*.log
+
+# Large raw drone recordings
+*.bag
+
+# Secrets
+.env
+.env.*

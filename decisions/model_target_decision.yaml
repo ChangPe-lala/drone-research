@@ -1,0 +1,33 @@
+approved: true
+
+target_strategy:
+  type: null
+  # DIRECT_EE | ENERGY_FIRST
+
+selected_model:
+  name: null
+  hyperparameters: null
+
+feature_set:
+  id: null
+
+deployment_model:
+  type: null
+  # FULL | PREFLIGHT_STRICT
+
+evaluation:
+  p1_result: null
+  p2_result: null
+
+stability:
+  seeds:
+    - 42
+    - 7
+    - 21
+    - 84
+    - 123
+
+decision:
+  rationale: null
+  approved_by: null
+  approved_at: null

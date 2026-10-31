@@ -1,0 +1,13 @@
+# # G07 human decision gate.
+# # Keep this false until the CURRENT segment dataset has been benchmarked.
+# selected_model: null
+# approved: false
+# comments: "Benchmark required after Method-C topology rebuild."
+
+selected_model: ExtraTrees
+approved: true
+comments: >
+  ExtraTrees selected from the current Method-C segment benchmark.
+  It achieved the lowest RMSE (1.907782), lowest MAE (0.647445),
+  highest R2 (0.796122), and lowest WMAPE (0.196263) among the
+  evaluated models.

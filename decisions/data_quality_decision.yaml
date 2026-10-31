@@ -1,0 +1,130 @@
+# =====================================================================
+# HUMAN GATE 1: DATA QUALITY DECISIONS
+# =====================================================================
+# This file dictates how missing values and outliers are handled.
+# The pipeline will STOP if approved = false.
+
+approved: true
+approved_by: "Your Name"
+date: "2026-08-21"
+decision_version: "v2.1"
+dataset_name: "flight_with_weather.csv"
+dataset_version: "v1.0"
+
+# ---------------------------------------------------------------------
+# EXPECTED FINAL DATASET (REGRESSION CHECK)
+# ---------------------------------------------------------------------
+expected_final_dataset:
+  rows: 249011
+  flights: 194
+  columns: 38
+  missing_cells: 0
+  exact_duplicates: 0
+  flight_time_duplicates: 0
+
+validation:
+  enforce_expected_shape: true
+
+# ---------------------------------------------------------------------
+# FLIGHT HANDLING
+# ---------------------------------------------------------------------
+flight_handling:
+  remove:
+    - flight: 211
+      reason: "Static candidate; low altitude/speed; 100% weather missing"
+
+    - flight: 212
+      reason: "Static candidate; low altitude/speed; 100% weather missing"
+
+    - flight: 213
+      reason: "Static candidate; low altitude/speed; 100% weather missing"
+
+    - flight: 214
+      reason: "Static candidate; low altitude/speed; 100% weather missing"
+
+    - flight: 215
+      reason: "Static candidate; low altitude/speed; 100% weather missing"
+
+    - flight: 216
+      reason: "Static candidate; low altitude/speed; 100% weather missing"
+
+    - flight: 217
+      reason: "Static candidate; low altitude/speed; 100% weather missing"
+
+    - flight: 218
+      reason: "Static candidate; low altitude/speed; 100% weather missing"
+
+    - flight: 219
+      reason: "Static candidate; low altitude/speed; 100% weather missing"
+
+    - flight: 221
+      reason: "Hover candidate; route H with low speed"
+
+    - flight: 222
+      reason: "Hover candidate; route H with low speed"
+
+    - flight: 223
+      reason: "Hover candidate; route H with low speed"
+
+    - flight: 224
+      reason: "Hover candidate; route H with low speed"
+
+# ---------------------------------------------------------------------
+# DUPLICATE HANDLING
+# ---------------------------------------------------------------------
+duplicate_handling:
+  exact_duplicates:
+    action: "remove"
+
+  flight_time_duplicates:
+    action: "keep"
+
+# ---------------------------------------------------------------------
+# MISSING VALUE POLICIES
+# ---------------------------------------------------------------------
+missing_handling:
+  affected_flights:
+    action: "remove_flight"
+
+  remaining_missing:
+    action: "error"
+
+# ---------------------------------------------------------------------
+# OUTLIER POLICIES
+# ---------------------------------------------------------------------
+outlier_handling:
+  battery_voltage:
+    action: "keep"
+    reason: "Physically valid"
+
+  battery_current:
+    action: "keep"
+    reason: "Physically plausible"
+
+  altitude:
+    action: "keep"
+    reason: "Physically plausible"
+
+  wind_gust_ms:
+    action: "keep"
+    reason: "Statistical outlier but physically valid"
+
+  temperature_c:
+    action: "keep"
+    reason: "Statistically suspicious but physically valid"
+
+# ---------------------------------------------------------------------
+# LEAKAGE AUDIT LEVEL 2 (STEP 6)
+# ---------------------------------------------------------------------
+leakage_audit:
+  forbidden_columns:
+    - "energy_efficiency"
+    - "energy_consumed_wh"
+
+  target_derived_columns:
+    - "energy_consumed_wh"
+
+  allowed_operational_features:
+    - "battery_voltage"
+    - "battery_current"
+    - "time"

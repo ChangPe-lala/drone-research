@@ -1,0 +1,24 @@
+# =====================================================================
+# HUMAN GATE 2: SPLIT PROTOCOL DECISION
+# =====================================================================
+# This file dictates how the data is split into Train and Test sets.
+# The pipeline will STOP if approved = false.
+
+approved: true
+approved_by: "Researcher Name"
+date: "YYYY-MM-DD"
+
+# ---------------------------------------------------------------------
+# Protocol Selection
+# What constitutes an independent observation?
+# Options: 
+#  - "random" (ShuffleSplit - only if rows are strictly independent)
+#  - "group" (GroupShuffleSplit - e.g., group by date or route)
+#  - "time" (TimeSeriesSplit or Time-based Holdout)
+# ---------------------------------------------------------------------
+protocol: "group"
+group_column: "date"
+test_size: 0.25
+
+# Reason for this choice based on split_analysis.py evidence
+decision_reason: "Flights on the same date experience identical weather conditions. Random split would cause weather data leakage between train and test. Grouping by date ensures models generalize to unseen weather."
