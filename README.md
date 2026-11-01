@@ -81,7 +81,7 @@ No automatic CP1/CP2/CP3 approval or selection is performed.
 - `docs/`: Methodology and protocols.
 
 
-## Multi-UAV EE patch — August 2026
+## Multi-UAV EE patch 
 
 The current primary target is `energy_efficiency`. Shared target integration now uses the same `0 < dt <= 30 s` segment-validity rule for distance and battery energy. Observed `relative_wind_angle` is analysis-only. Route-weather aerodynamic features are supported, but historical Start→End geometry is explicitly tagged as `OBSERVED_ENDPOINT_PROXY`; final pre-flight use requires true planned route/edge geometry. See `CODE_AUDIT_AND_PATCH_NOTES.md`.
 
